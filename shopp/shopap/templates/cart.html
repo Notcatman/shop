@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+    <style>
+        @keyframes opacity{
+            from{
+                opacity: 0;
+                
+            }to{
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <div style="padding: 40px; max-width: 450px; margin: 0 auto; animation: opacity 1.3s ease-out; font-weight: 100; text-align: center; margin-top: 40px; border: 2px groove hsla(0, 0%, 24%, 0.401); border-radius: 8px; 
+    background: linear-gradient(90deg, hsla(0, 0%, 75%, 0.594), hsl(218, 10%, 85%));">
+        <h2 style="font-size: 41px; color: hsl(0, 0%, 35%);">
+            Cart <img src="/static/images/cartgray.png" alt="Cart" style="height: 50px; vertical-align: middle;">
+        </h2>
+        {% for i in cart_item %}
+            <div style="background: hsla(0, 0%, 100%, 0.9); padding: 10px; margin: 10px 0; border-radius: 10px; border: 2px groove hsla(0, 0%, 16%, 0.33);">
+                <h1>{{ i.product.name }} - <span style="color: hsl(120, 98%, 32%);">{{ i.product.price }}$</span></h1>
+            </div>
+        {% empty %}
+            <p style="text-align: center; font-size: 24px;">Your cart is empty</p>
+        {% endfor %}
+
+        <div>
+            <h1 style="color: hsl(0, 0%, 35%);">Total: <span style="color: hsl(120, 98%, 32%);">{{ total }}$</span></h1>
+        </div>
+    </div>
+{% endblock %}

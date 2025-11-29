@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} {{ product.name }} {% endblock %}
+
+{% block content %}
+    <style>
+        @keyframes opacity{
+            from{
+                opacity: 0;
+                
+            }to{
+                opacity: 1;
+            }
+        }
+    </style>
+<div style="max-width: 800px; margin: 50px auto; padding: 40px; background: hsla(0, 0%, 100%, 0.9); border-radius: 15px; border: 2px groove hsla(0, 1%, 17%, 0.261); animation: opacity 1.5s ease-out;">
+    
+    <h2 style="color: hsl(207, 41%, 28%); font-size: 42px;">{{ product.name }}</h2>
+    <p style="font-size: 20px; color: hsl(0, 0%, 40%);">{{ product.description }}</p>
+    <p style="color: hsl(120, 60%, 40%); font-size: 36px; font-weight: bold;">{{ product.price }}$</p>
+    <p style="color: hsl(0, 0%, 60%); font-size: 18px;">Added: {{ product.date|date:"F d, Y" }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Products {% endblock %}
+
+{% block content %}
+
+<style>
+
+    @keyframes opacity{
+            from{
+                opacity: 0;
+                
+            }to{
+                opacity: 1;
+            }
+        }
+
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        animation: opacity 1.3s ease-out;
+    }
+
+    .product-card {
+        background: hsla(0, 0%, 100%, 0.9);
+        border-radius: 15px;
+        border: 2px groove hsla(0, 0%, 25%, 0.241);
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        cursor: pointer;
+    }
+
+    .product-card h2 {
+        color: hsl(207, 41%, 28%);
+        font-size: 24px;
+        margin: 10px 0;
+    }
+
+    .product-card .price {
+        color: hsl(120, 60%, 40%);
+        font-size: 28px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="products-container">
+    {% for n in products %}
+    <a href="{% url 'product_detail' n.id %}" style="text-decoration: none;">
+        <div class="product-card">
+            <h2>{{ n.name }}</h2>
+            <p class="price">{{ n.price }}$</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
